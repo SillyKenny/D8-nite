@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random D8 Nite Ideas!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+    <style>
+      .cherry-bomb-one-regular {
+          font-family: "Cherry Bomb One", serif;
+          font-weight: 400;
+          font-style: normal;
+        }
+        body {
+            font-family: "Cherry Bomb One", serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #output {
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #f864c7;
+            color: white;
+            font-family: "Cherry Bomb One", serif;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: white;
+            color: #f864c7;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="displaySentence()">Generate a D8 Nite!</button>
+    <div id="output"></div>
+
+    <script>
+        function generate() {
+            const library = {
+                prompts: ['Camping', 'Picnic', 'Game Together', 'Cook Together', 'Watch Movies Together',
+                    'Learn a new skill together', 'Teach each other your favorite hobby', 'learn to crochet',
+                    'learn to knit', 'make bracelets for each other', 'Go to the park', 'Do a double/triple date with friends',
+                    'Go on a hike', 'Get a couples massage', 'Go ice skating', 'go shopping', 'recreate the first date',
+                    'take photos of/with each other', 'DIY spa night', 'Wine & cheese Tasting', 'chocolate tasting',
+                    'Tea tasting', 'go to a sauna', 'go on a hot-air-ballon', 'go to the carnival', 'go to a concert',
+                    'go to the arcade', 'write cheesy notes/letters', 'play boardgames', 'prank each other'
+                ]
+            };
+
+            function getRandomWord(type) {
+                return library[type][Math.floor(Math.random() * library[type].length)];
+            }
+
+            const sentenceStructure = [
+                ['prompts']
+            ];
+
+            const randomStructure = sentenceStructure[Math.floor(Math.random() * sentenceStructure.length)];
+
+            const sentence = randomStructure.map(type => getRandomWord(type)).join(' ');
+
+            return sentence.charAt(0).toUpperCase() + sentence.slice(1) + '.';
+        }
+
+        function displaySentence() {
+            document.getElementById('output').textContent = generate();
+        }
+    </script>
+</body>
+</html>
